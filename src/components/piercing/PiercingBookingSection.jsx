@@ -111,7 +111,7 @@ export default function PiercingBookingSection() {
 
                 <div className="grid sm:grid-cols-2 gap-6">
                   <FormField label="Phone" icon={Phone} error={errors.phone}>
-                    <input type="tel" value={form.phone} onChange={handleChange('phone')} placeholder="+91 98765 43210" className={inputClass(errors.phone)} />
+                    <input type="tel" value={form.phone} onChange={handleChange('phone')} placeholder="+91 XXXXX XXXXX" className={inputClass(errors.phone)} />
                   </FormField>
                   <FormField label="Preferred Date" icon={Calendar}>
                     <input type="date" value={form.date} onChange={handleChange('date')} className={inputClass(false) + ' cursor-pointer'} />
@@ -126,6 +126,15 @@ export default function PiercingBookingSection() {
                     rows={4}
                     className={inputClass(false) + ' resize-none'}
                   />
+                  <label className="flex items-center justify-center gap-3 w-full h-14 rounded-full border border-white/10 bg-zinc-900 hover:bg-purple-500 hover:border-purple-500 shadow-[0_0_30px_rgba(168,85,247,0.4)]  transition-all duration-300 cursor-pointer text-white font-medium">
+                    📁 Choose Reference Images
+                      <input
+                          type="file"
+                          name="upload_files[]"
+                          multiple
+                          className="hidden"
+                           />
+                      </label>
                 </FormField>
 
                 <button

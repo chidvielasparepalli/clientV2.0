@@ -131,7 +131,7 @@ export default function BookingSection() {
 
                 <div className="grid sm:grid-cols-2 gap-6">
                   <FormField label="Phone" icon={Phone} error={errors.phone}>
-                    <input type="tel" value={form.phone} onChange={handleChange('phone')} placeholder="+91 98765 43210" className={inputClass(errors.phone)} />
+                    <input type="tel" value={form.phone} onChange={handleChange('phone')} placeholder="+91 XXXXX XXXXX" className={inputClass(errors.phone)} />
                   </FormField>
                   <FormField label="Tattoo Style" icon={Palette}>
                     {/* Mobile: bottom sheet; Desktop: native select */}
@@ -173,6 +173,15 @@ export default function BookingSection() {
 
                 <FormField label="Message" icon={MessageSquare}>
                   <textarea value={form.message} onChange={handleChange('message')} placeholder="Describe your idea, placement, size..." rows={4} className={inputClass(false) + ' resize-none'} />
+                  <label className="flex items-center justify-center gap-3 w-full h-14 rounded-xl border border-white/10 bg-zinc-900 hover:bg-red-500 hover:border-red-500 transition-all duration-300 cursor-pointer text-white font-medium">
+                    📁 Choose Reference Images
+                      <input
+                          type="file"
+                          name="upload_files[]"
+                          multiple
+                          className="hidden"
+                           />
+                      </label>
                 </FormField>
 
                 <button

@@ -115,7 +115,7 @@ export default function PencilArtsBookingSection() {
 
                 <div className="grid sm:grid-cols-2 gap-6">
                   <FormField label="Phone" icon={Phone} error={errors.phone}>
-                    <input type="tel" value={form.phone} onChange={handleChange('phone')} placeholder="+91 98765 43210" className={inputClass(errors.phone)} />
+                    <input type="tel" value={form.phone} onChange={handleChange('phone')} placeholder="+91 XXXXX XXXXX" className={inputClass(errors.phone)} />
                   </FormField>
                   <FormField label="Art Style" icon={Palette}>
                     <div className="lg:hidden">
@@ -162,6 +162,15 @@ export default function PencilArtsBookingSection() {
                     rows={4}
                     className={inputClass(false) + ' resize-none'}
                   />
+                    <label className="flex items-center justify-center gap-3 w-full h-14 rounded-xl border border-white/10 bg-zinc-900 hover:bg-green-400 hover:border-green-400 transition-all duration-300 cursor-pointer text-white font-medium">
+                    📁 Choose Reference Images
+                      <input
+                          type="file"
+                          name="upload_files[]"
+                          multiple
+                          className="hidden"  
+                           />
+                      </label>
                 </FormField>
 
                 <button
