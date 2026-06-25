@@ -1,4 +1,5 @@
 import { useState, useRef } from 'react';
+import axios from 'axios';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import { Calendar, User, Palette, Phone, Mail, MessageSquare, CheckCircle, ChevronDown } from 'lucide-react';
 import StyleBottomSheet from '@/components/tattoo/StyleBottomSheet';
@@ -19,6 +20,8 @@ function FormField({ label, icon: Icon, error, children }) {
 
 export default function BookingSection() {
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+const [files, setFiles] = useState([]);
   const [form, setForm] = useState({ name: '', email: '', phone: '', style: '', date: '', message: '' });
   const [errors, setErrors] = useState({});
   const [sheetOpen, setSheetOpen] = useState(false);
@@ -40,15 +43,59 @@ export default function BookingSection() {
     return Object.keys(errs).length === 0;
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (!validate()) return;
+  const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  if (!validate()) return;
+
+  try {
+    setLoading(true);
+
+    const formData = new FormData();
+
+    formData.append("name", form.name);
+    formData.append("email", form.email);
+    formData.append("phone", form.phone);
+    formData.append("style", form.style);
+    formData.append("date", form.date);
+    formData.append("message", form.message);
+
+    files.forEach((file) => {
+      formData.append("images", file);
+    });
+
+    await axios.post(
+      "http://localhost:5000/api/book",
+      formData,
+      {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      }
+    );
+
     setSubmitted(true);
+
     setTimeout(() => {
       setSubmitted(false);
-      setForm({ name: '', email: '', phone: '', style: '', date: '', message: '' });
+      setFiles([]);
+      setForm({
+        name: "",
+        email: "",
+        phone: "",
+        style: "",
+        date: "",
+        message: "",
+      });
     }, 4000);
-  };
+
+  } catch (err) {
+    console.error(err);
+    alert("Booking failed.");
+  } finally {
+    setLoading(false);
+  }
+};
 
   const handleChange = (field) => (e) => {
     setForm({ ...form, [field]: e.target.value });
@@ -176,19 +223,20 @@ export default function BookingSection() {
                   <label className="flex items-center justify-center gap-3 w-full h-14 rounded-xl border border-white/10 bg-zinc-900 hover:bg-red-500 hover:border-red-500 transition-all duration-300 cursor-pointer text-white font-medium">
                     📁 Choose Reference Images
                       <input
-                          type="file"
-                          name="upload_files[]"
-                          multiple
-                          className="hidden"
-                           />
+                        type="file"
+                        multiple
+                        className="hidden"
+                        onChange={(e) => setFiles([...e.target.files])}
+                            />
                       </label>
                 </FormField>
 
-                <button
-                  type="submit"
+               <button
+                    type="submit"
+                    disabled={loading}
                   className="w-full py-4 rounded-full bg-primary text-primary-foreground text-sm tracking-[0.15em] uppercase font-body font-semibold hover:shadow-[0_0_30px_rgba(193,18,31,0.4)] transition-all duration-300"
                 >
-                  Submit Booking Request
+                  {loading ? "Sending..." : "Submit Booking Request"}
                 </button>
               </motion.form>
             )}

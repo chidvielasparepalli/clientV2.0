@@ -1,4 +1,5 @@
 import { useState, useRef } from 'react';
+import axios from 'axios';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import { Calendar, User, Palette, Phone, Mail, MessageSquare, CheckCircle, ChevronDown } from 'lucide-react';
 import StyleBottomSheet from '@/components/tattoo/StyleBottomSheet';
