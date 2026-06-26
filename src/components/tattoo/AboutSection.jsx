@@ -111,7 +111,7 @@ hover:shadow-[0_0_10px_#ef4444,0_0_25px_#ef4444,0_0_50px_rgba(239,68,68,0.6)]
   ) : (
     <span className="text-primary">{stat.suffix}</span>
   )}
-</div>          
+</div>
               </motion.div>
             ))}
           </div>
