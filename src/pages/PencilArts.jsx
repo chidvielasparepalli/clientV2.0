@@ -5,7 +5,7 @@ import FloatingButtons from '@/components/tattoo/FloatingButtons';
 import PencilArtsHeroSection from '@/components/pencilarts/PencilArtsHeroSection';
 import PencilArtsAboutSection from '@/components/pencilarts/PencilArtsAboutSection';
 import PencilArtsGallery from '@/components/pencilarts/PencilArtsGallery';
-import ArtistsSection from '@/components/tattoo/ArtistsSection';
+import ArtistsSection from '@/components/pencilarts/ArtistsSection';
 import ServicesSection from '@/components/tattoo/ServicesSection';
 import PencilArtsBookingSection from '@/components/pencilarts/PencilArtsBookingSection';
 import TestimonialsSection from '@/components/tattoo/TestimonialsSection';

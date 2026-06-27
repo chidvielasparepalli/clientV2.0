@@ -65,7 +65,7 @@ const [files, setFiles] = useState([]);
     });
 
     await axios.post(
-      "https://maheshtattoostudio-com.onrender.com",
+      "https://maheshtattoostudio-in.onrender.com",
       formData,
       {
         headers: {

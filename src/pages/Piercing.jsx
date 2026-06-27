@@ -4,7 +4,7 @@ import Navbar from '@/components/tattoo/Navbar';
 import FloatingButtons from '@/components/tattoo/FloatingButtons';
 import PiercingHeroSection from '@/components/piercing/PiercingHeroSection';
 import PiercingAboutSection from '@/components/piercing/PiercingAboutSection';
-import ArtistsSection from '@/components/tattoo/ArtistsSection';
+import ArtistsSection from '@/components/piercing/ArtistsSection';
 import PiercingGallery from '@/components/piercing/PiercingGallery';
 import PiercingBookingSection from '@/components/piercing/PiercingBookingSection';
 import TestimonialsSection from '@/components/tattoo/TestimonialsSection';

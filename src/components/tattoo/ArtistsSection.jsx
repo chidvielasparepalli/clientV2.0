@@ -1,10 +1,13 @@
 import { motion } from 'framer-motion';
 
+const artistImage =
+  "https://media.base44.com/images/public/6a35699540c0f3fcf7294410/e7e3cc15a_ChatGPTImageJun20202607_22_14AM.png";
+
 const artist = {
-  name: 'Mahesh',
-  specialization: 'Realism & Portrait',
-  experience: '40 years in art, 5 years tattooing',
-  bio: 'Retired Indian Army veteran. Master of realistic tattoos, blood art, sand art, and live portrait painting.',
+  name: "Mahesh",
+  specialization: "Realism & Portrait Tattoos",
+  experience: "40 years in art, 5 years tattooing",
+  bio: "Retired Indian Army veteran specializing in realistic tattoos and custom portrait tattoos. Every design is created with precision, discipline, and artistic excellence.",
 };
 
 export default function ArtistsSection() {
@@ -49,11 +52,11 @@ export default function ArtistsSection() {
           transition={{ duration: 0.8 }}
         >
           <img
-            src="https://media.base44.com/images/public/6a35699540c0f3fcf7294410/e7e3cc15a_ChatGPTImageJun20202607_22_14AM.png"
-            alt="Mahesh - Tattoo Artist"
-            className="w-full h-full object-cover"
-            style={{ objectPosition: 'center 20%' }}
-          />
+  src={artistImage}
+  alt="Mahesh - Tattoo Artist"
+  className="w-full h-full object-cover"
+  style={{ objectPosition: "center 20%" }}
+/>
         </motion.div>
 
         {/* Right: Content */}
@@ -115,16 +118,16 @@ export default function ArtistsSection() {
           style={{ aspectRatio: '4/5' }}
         >
           <img
-            src="https://media.base44.com/images/public/6a35699540c0f3fcf7294410/8f420f2c9_ChatGPTImageJun20202607_22_14AM.png"
-            alt="Mahesh - Tattoo Artist"
-            className="w-full h-full object-cover"
-            style={{ objectPosition: 'center 15%' }}
-          />
+  src={artistImage}
+  alt="Mahesh - Tattoo Artist"
+  className="w-full h-full object-cover"
+  style={{ objectPosition: "center 15%" }}
+/>
         </motion.div>
 
         {/* Content */}
         <div className="space-y-6">
-          <div>
+          <div> 
             <h3 className="font-display text-4xl text-foreground mb-3">
               {artist.name}
             </h3>
