@@ -8,7 +8,7 @@ export const base44 = createClient({
   appId,
   token,
   functionsVersion,
-  serverUrl: import.meta.env.VITE_BASE44_SERVER_URL || 'https://maheshtattoostudio-in.onrender.com',
+  serverUrl: import.meta.env.VITE_BASE44_SERVER_URL || 'https://maheshtattoostudio-in.onrender.com/api/book',
   requiresAuth: false,
   appBaseUrl
 });
