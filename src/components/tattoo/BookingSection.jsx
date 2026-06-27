@@ -81,7 +81,7 @@ const [files, setFiles] = useState([]);
       setFiles([]);
       setForm({
         name: "",
-        email: "",
+        email: "",  
         phone: "",
         style: "",
         date: "",

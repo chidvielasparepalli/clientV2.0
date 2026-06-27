@@ -14,12 +14,22 @@ const upload = multer({
   storage: multer.memoryStorage(),
 });
 
-const transporter = nodemailer.createTransport({
-  service: "gmail",
+cconst transporter = nodemailer.createTransport({
+  host: "smtp.gmail.com",
+  port: 465,
+  secure: true,
   auth: {
     user: process.env.EMAIL_USER,
     pass: process.env.EMAIL_PASS,
   },
+});
+
+transporter.verify((error, success) => {
+  if (error) {
+    console.error("SMTP ERROR:", error);
+  } else {
+    console.log("SMTP READY");
+  }
 });
 
 app.post("/api/book", upload.array("images"), async (req, res) => {
