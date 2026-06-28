@@ -27,7 +27,7 @@ app.post("/api/book", upload.array("images"), async (req, res) => {
       <p><strong>Email:</strong> ${email}</p>
       <p><strong>Phone:</strong> ${phone}</p>
       <p><strong>Style:</strong> ${style}</p>
-      <p><strong>Date:</strong> ${date}</p>
+      <p><strong>Preferred Date:</strong> ${date}</p>
       <p><strong>Message:</strong></p>
       <p>${message}</p>
     `;
@@ -47,11 +47,36 @@ app.post("/api/book", upload.array("images"), async (req, res) => {
       });
     }
 
+    // Email to studio
     await resend.emails.send({
       from: "Mahesh Tattoo Studio <onboarding@resend.dev>",
       to: process.env.EMAIL_USER,
       subject: `🖋️ New Tattoo Booking - ${name}`,
       html,
+    });
+
+    // Confirmation email to customer
+    await resend.emails.send({
+      from: "Mahesh Tattoo Studio <onboarding@resend.dev>",
+      to: email,
+      subject: "Booking Request Received",
+      html: `
+        <h2>Thank you for booking with Mahesh Tattoos & Arts!</h2>
+
+        <p>Hi <strong>${name}</strong>,</p>
+
+        <p>We've received your tattoo booking request successfully.</p>
+
+        <p><strong>Tattoo Style:</strong> ${style}</p>
+        <p><strong>Preferred Date:</strong> ${date}</p>
+
+        <p>Our team will review your request and contact you shortly.</p>
+
+        <br>
+
+        <p>Regards,</p>
+        <h3>Mahesh Tattoos & Arts</h3>
+      `,
     });
 
     res.json({
@@ -60,7 +85,7 @@ app.post("/api/book", upload.array("images"), async (req, res) => {
     });
 
   } catch (err) {
-    console.error(err);
+    console.error("Resend Error:", err);
 
     res.status(500).json({
       success: false,
