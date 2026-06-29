@@ -1,135 +1,144 @@
-<head>
-  <script>
-    const saved = localStorage.getItem('theme');
-    if (
-      saved === 'dark' ||
-      (!saved &&
-        window.matchMedia('(prefers-color-scheme: dark)').matches)
-    ) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-  </script>
+```html
+<!doctype html>
+<html lang="en">
+  <head>
+    <script>
+      const saved = localStorage.getItem("theme");
+      if (
+        saved === "dark" ||
+        (!saved &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+    </script>
 
-  <meta charset="UTF-8" />
+    <meta charset="UTF-8" />
 
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
-  />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
 
-  <title>
-    Mahesh Tattoo Studio | Best Tattoo Studio in Secunderabad | Tattoo,
-    Piercing & Pencil Arts
-  </title>
+    <title>
+      Mahesh Tattoo Studio | Best Tattoo Studio in Secunderabad | Tattoos,
+      Piercing & Pencil Arts
+    </title>
 
-  <meta
-    name="description"
-    content="Mahesh Tattoo Studio is one of the best tattoo studios in Secunderabad & Hyderabad with 40+ years of artistic experience. Specializing in realistic tattoos, blackwork, traditional tattoos, Japanese tattoos, custom tattoo designs, body piercing, and hyper realistic pencil portraits."
-  />
+    <meta
+      name="description"
+      content="Mahesh Tattoo Studio is one of the best tattoo studios in Secunderabad & Hyderabad with 40+ years of artistic experience. Specializing in realistic tattoos, blackwork, traditional tattoos, Japanese tattoos, custom tattoo designs, body piercing, and hyper realistic pencil portraits."
+    />
 
-  <meta
-    name="keywords"
-    content="Mahesh Tattoo Studio, Mahesh Tattoos, Best Tattoo Studio Hyderabad, Best Tattoo Studio Secunderabad, Tattoo Artist Hyderabad, Tattoo Artist Secunderabad, Tattoo Shop, Tattoos, Tattoo, Custom Tattoos, Realistic Tattoo, Portrait Tattoo, Blackwork Tattoo, Japanese Tattoo, Traditional Tattoo, Piercing, Ear Piercing, Nose Piercing, Pencil Portrait, Hyper Realistic Pencil Art, Neredmet Tattoo Studio, Hyderabad Tattoo"
-  />
+    <meta
+      name="keywords"
+      content="Mahesh Tattoo Studio, Mahesh Tattoos, Tattoo Studio Hyderabad, Tattoo Studio Secunderabad, Tattoo Artist Hyderabad, Tattoo Artist Secunderabad, Tattoo Shop, Tattoos, Tattoo, Custom Tattoos, Realistic Tattoo, Portrait Tattoo, Blackwork Tattoo, Japanese Tattoo, Traditional Tattoo, Piercing, Ear Piercing, Nose Piercing, Pencil Portrait, Hyper Realistic Pencil Art, Neredmet Tattoo Studio, Hyderabad Tattoo"
+    />
 
-  <meta name="author" content="Mahesh Tattoo Studio" />
-  <meta name="robots" content="index, follow" />
-  <meta name="theme-color" content="#111111" />
+    <meta name="author" content="Mahesh Tattoo Studio" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#111111" />
 
-  <link rel="canonical" href="https://www.maheshtattoostudio.in/" />
+    <link rel="canonical" href="https://www.maheshtattoostudio.in/" />
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
 
-  <link rel="manifest" href="/manifest.json" />
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="Mahesh Tattoo Studio | Best Tattoo Studio in Secunderabad"
+    />
+    <meta
+      property="og:description"
+      content="Award-winning tattoo studio with 40+ years of artistic excellence. Tattoos • Piercing • Pencil Arts."
+    />
+    <meta
+      property="og:url"
+      content="https://www.maheshtattoostudio.in/"
+    />
+    <meta
+      property="og:image"
+      content="https://www.maheshtattoostudio.in/og-image.jpg"
+    />
+    <meta property="og:site_name" content="Mahesh Tattoo Studio" />
 
-  <link
-    rel="icon"
-    type="image/png"
-    href="/favicon.png"
-  />
+    <!-- Twitter -->
+    <meta
+      name="twitter:card"
+      content="summary_large_image"
+    />
+    <meta
+      name="twitter:title"
+      content="Mahesh Tattoo Studio"
+    />
+    <meta
+      name="twitter:description"
+      content="Best Tattoo Studio in Secunderabad & Hyderabad."
+    />
+    <meta
+      name="twitter:image"
+      content="https://www.maheshtattoostudio.in/og-image.jpg"
+    />
 
-  <!-- Open Graph -->
+    <!-- Local Business Schema -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "TattooParlor",
+        "name": "Mahesh Tattoo Studio",
+        "url": "https://www.maheshtattoostudio.in",
+        "logo": "https://www.maheshtattoostudio.in/favicon.png",
+        "image": "https://www.maheshtattoostudio.in/og-image.jpg",
+        "telephone": "+91-XXXXXXXXXX",
+        "email": "maheshartstudio@gmail.com",
+        "priceRange": "₹₹",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Neredmet",
+          "addressLocality": "Secunderabad",
+          "addressRegion": "Telangana",
+          "postalCode": "500056",
+          "addressCountry": "IN"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": "17.487",
+          "longitude": "78.542"
+        },
+        "openingHours": [
+          "Mon-Sun 10:00-21:00"
+        ],
+        "sameAs": [
+          "https://www.instagram.com/maheshtattoostudio",
+          "https://www.facebook.com/maheshtattoostudio"
+        ],
+        "description": "Award-winning tattoo studio in Secunderabad with over 40 years of artistic experience. Tattoos, Piercing and Hyper Realistic Pencil Arts."
+      }
+    </script>
+    ```html
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RCQJGBQ365"></script>
 
-  <meta property="og:type" content="website" />
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
 
-  <meta
-    property="og:title"
-    content="Mahesh Tattoo Studio | Best Tattoo Studio in Secunderabad"
-  />
+  gtag("js", new Date());
 
-  <meta
-    property="og:description"
-    content="Award-winning tattoo studio with 40+ years of artistic excellence. Tattoos • Piercing • Pencil Arts."
-  />
-
-  <meta
-    property="og:url"
-    content="https://www.maheshtattoostudio.in/"
-  />
-
-  <meta
-    property="og:image"
-    content="https://www.maheshtattoostudio.in/og-image.jpg"
-  />
-
-  <meta property="og:site_name" content="Mahesh Tattoo Studio" />
-
-  <!-- Twitter -->
-
-  <meta
-    name="twitter:card"
-    content="summary_large_image"
-  />
-
-  <meta
-    name="twitter:title"
-    content="Mahesh Tattoo Studio"
-  />
-
-  <meta
-    name="twitter:description"
-    content="Best Tattoo Studio in Secunderabad & Hyderabad."
-  />
-
-  <meta
-    name="twitter:image"
-    content="https://www.maheshtattoostudio.in/og-image.jpg"
-  />
-
-  <script type="application/ld+json">
-{
-  "@context":"https://schema.org",
-  "@type":"TattooParlor",
-  "name":"Mahesh Tattoo Studio",
-  "url":"https://www.maheshtattoostudio.in",
-  "logo":"https://www.maheshtattoostudio.in/favicon.png",
-  "image":"https://www.maheshtattoostudio.in/og-image.jpg",
-  "telephone":"+91-XXXXXXXXXX",
-  "email":"maheshartstudio@gmail.com",
-  "priceRange":"₹₹",
-  "address":{
-    "@type":"PostalAddress",
-    "streetAddress":"Neredmet",
-    "addressLocality":"Secunderabad",
-    "addressRegion":"Telangana",
-    "postalCode":"500056",
-    "addressCountry":"IN"
-  },
-  "geo":{
-    "@type":"GeoCoordinates",
-    "latitude":"17.487",
-    "longitude":"78.542"
-  },
-  "openingHours":[
-    "Mon-Sun 10:00-21:00"
-  ],
-  "sameAs":[
-    "https://www.instagram.com/maheshtattoostudio",
-    "https://www.facebook.com/maheshtattoostudio"
-  ],
-  "servesCuisine":"",
-  "description":"Award-winning tattoo studio in Secunderabad with over 40 years of artistic experience. Tattoos, Piercing and Hyper Realistic Pencil Arts."
-}
+  gtag("config", "G-RCQJGBQ365");
 </script>
+```
+  </head>
 
-</head>
+  <body>
+    <div id="root"></div>
+
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
+```
