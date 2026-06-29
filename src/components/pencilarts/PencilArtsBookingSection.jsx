@@ -23,7 +23,10 @@ export default function PencilArtsBookingSection() {
   const [form, setForm] = useState({ name: '', email: '', phone: '', style: '', date: '', message: '' });
   const [errors, setErrors] = useState({});
   const [sheetOpen, setSheetOpen] = useState(false);
-
+  
+  const [loading, setLoading] = useState(false);
+  const [files, setFiles] = useState([]);
+  
   const sectionRef = useRef(null);
   const { scrollYProgress } = useScroll({ target: sectionRef, offset: ['start end', 'start start'] });
   const x = useTransform(scrollYProgress, [0, 0.5], [120, 0]);
@@ -39,15 +42,59 @@ export default function PencilArtsBookingSection() {
     return Object.keys(errs).length === 0;
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (!validate()) return;
+    const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  if (!validate()) return;
+
+  try {
+    setLoading(true);
+
+    const formData = new FormData();
+
+    formData.append("name", form.name);
+    formData.append("email", form.email);
+    formData.append("phone", form.phone);
+  formData.append("style", form.style || "Pencil Arts");
+    formData.append("date", form.date);
+    formData.append("message", form.message);
+
+    files.forEach((file) => {
+      formData.append("images", file);
+    });
+
+    await axios.post(
+  "https://maheshtattoostudio-emailuser.up.railway.app/api/book",
+  formData,
+  {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+  }
+);
+
     setSubmitted(true);
+
     setTimeout(() => {
       setSubmitted(false);
-      setForm({ name: '', email: '', phone: '', style: '', date: '', message: '' });
+      setFiles([]);
+      setForm({
+        name: "",
+        email: "",  
+        phone: "",
+        style: "",
+        date: "",
+        message: "",
+      });
     }, 4000);
-  };
+
+  } catch (err) {
+    console.error(err);
+    alert("Booking failed.");
+  } finally {
+    setLoading(false);
+  }
+};
 
   const handleChange = (field) => (e) => {
     setForm({ ...form, [field]: e.target.value });
@@ -167,19 +214,21 @@ export default function PencilArtsBookingSection() {
                     📁 Choose Reference Images
                       <input
                           type="file"
-                          name="upload_files[]"
                           multiple
-                          className="hidden"  
-                           />
+                          className="hidden"
+                          onChange={(e) => setFiles([...e.target.files])}
+                      />
                       </label>
                 </FormField>
 
                 <button
                   type="submit"
-                  className="w-full py-4 rounded-full bg-primary text-primary-foreground text-sm tracking-[0.15em] uppercase font-body font-semibold hover:shadow-[0_0_30px_rgba(34,139,34,0.4)] transition-all duration-300"
-                >
-                  Submit Booking Request
+                  disabled={loading}
+                  className="w-full py-4 rounded-full bg-primary text-primary-foreground text-sm tracking-[0.15em] uppercase font-body font-semibold hover:shadow-[0_0_30px_rgba(34,139,34,0.4)] transition-all duration-300 disabled:opacity-60"
+                >                 
+                  {loading ? "Submitting..." : "Submit Booking Request"}
                 </button>
+
               </motion.form>
             )}
           </AnimatePresence>

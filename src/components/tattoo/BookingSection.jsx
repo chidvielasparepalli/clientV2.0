@@ -21,7 +21,7 @@ function FormField({ label, icon: Icon, error, children }) {
 export default function BookingSection() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
-const [files, setFiles] = useState([]);
+  const [files, setFiles] = useState([]);
   const [form, setForm] = useState({ name: '', email: '', phone: '', style: '', date: '', message: '' });
   const [errors, setErrors] = useState({});
   const [sheetOpen, setSheetOpen] = useState(false);

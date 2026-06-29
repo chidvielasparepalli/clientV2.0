@@ -35,15 +35,59 @@ export default function PiercingBookingSection() {
     return Object.keys(errs).length === 0;
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (!validate()) return;
+  const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  if (!validate()) return;
+
+  try {
+    setLoading(true);
+
+    const formData = new FormData();
+
+    formData.append("name", form.name);
+    formData.append("email", form.email);
+    formData.append("phone", form.phone);
+    formData.append("style", form.style);
+    formData.append("date", form.date);
+    formData.append("message", form.message);
+
+    files.forEach((file) => {
+      formData.append("images", file);
+    });
+
+    await axios.post(
+  "https://maheshtattoostudio-emailuser.up.railway.app/api/book",
+  formData,
+  {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+  }
+);
+
     setSubmitted(true);
+
     setTimeout(() => {
       setSubmitted(false);
-      setForm({ name: '', email: '', phone: '', date: '', message: '' });
+      setFiles([]);
+      setForm({
+        name: "",
+        email: "",  
+        phone: "",
+        style: "",
+        date: "",
+        message: "",
+      });
     }, 4000);
-  };
+
+  } catch (err) {
+    console.error(err);
+    alert("Booking failed.");
+  } finally {
+    setLoading(false);
+  }
+};wssss 
 
   const handleChange = (field) => (e) => {
     setForm({ ...form, [field]: e.target.value });
@@ -130,19 +174,19 @@ export default function PiercingBookingSection() {
                   <label className="flex items-center justify-center gap-3 w-full h-14 rounded-full border border-white/10 bg-zinc-900 hover:bg-purple-500 hover:border-purple-500 shadow-[0_0_30px_rgba(168,85,247,0.4)]  transition-all duration-300 cursor-pointer text-white font-medium">
                     📁 Choose Reference Images
                       <input
-                          type="file"
-                          name="upload_files[]"
-                          multiple
-                          className="hidden"
-                           />
+                        type="file"
+                        multiple
+                        className="hidden"
+                        onChange={(e) => setFiles([...e.target.files])}
+                      />
                       </label>
                 </FormField>
 
                 <button
                   type="submit"
-                  className="w-full py-4 rounded-full bg-primary text-primary-foreground text-sm tracking-[0.15em] uppercase font-body font-semibold hover:shadow-[0_0_30px_rgba(168,85,247,0.4)] transition-all duration-300"
+                  disabled={loading}
                 >
-                  Submit Booking Request
+                  {loading ? "Sending..." : "Submit Booking Request"}
                 </button>
               </motion.form>
             )}
