@@ -66,13 +66,13 @@ export default function ContactSection() {
               <h3 className="font-display text-lg text-foreground mb-2">Phone</h3>
               <div className="flex items-center gap-3">
                 <a
-                  href="tel:+919748249133"
+                  href="#booking"
                   className="text-sm text-muted-foreground hover:text-primary transition-colors font-body"
                 >
-                  +91 97482 49133
+                  booking
                 </a>
                 <a
-                  href="tel:+919748249133"
+                  href="#booking"
                   className="flex items-center justify-center w-9 h-9 rounded-full bg-primary text-primary-foreground hover:bg-primary/80 transition-all duration-300 shadow-lg shadow-primary/30 hover:shadow-primary/50 hover:scale-110 select-none"
                   aria-label="Call now"
                 >
