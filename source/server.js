@@ -49,7 +49,7 @@ app.post("/api/book", upload.array("images"), async (req, res) => {
 
     // Email to studio
     await resend.emails.send({
-      from: "Mahesh Tattoo Studio <onboarding@resend.dev>",
+      from: "Mahesh Tattoo Studio <booking@maheshtattoostudio.in>",
       to: process.env.EMAIL_USER,
       subject: `🖋️ New Tattoo Booking - ${name}`,
       html,
@@ -57,7 +57,7 @@ app.post("/api/book", upload.array("images"), async (req, res) => {
 
     // Confirmation email to customer
     await resend.emails.send({
-      from: "Mahesh Tattoo Studio <onboarding@resend.dev>",
+      from: "Mahesh Tattoo Studio <booking@maheshtattoostudio.in>",
       to: email,
       subject: "Booking Request Received",
       html: `
