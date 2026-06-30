@@ -228,7 +228,7 @@ export default function PencilArtsBookingSection() {
                 >                 
                   {loading ? "Submitting..." : "Submit Booking Request"}
                 </button>
-
+ 
               </motion.form>
             )}
           </AnimatePresence>
