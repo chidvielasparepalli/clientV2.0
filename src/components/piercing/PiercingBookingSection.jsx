@@ -20,6 +20,7 @@ export default function PiercingBookingSection() {
   const [form, setForm] = useState({ name: '', email: '', phone: '', date: '', message: '' });
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
+  const [files, setFiles] = useState([]);
   const sectionRef = useRef(null);
   const { scrollYProgress } = useScroll({ target: sectionRef, offset: ['start end', 'start start'] });
   const x = useTransform(scrollYProgress, [0, 0.5], [120, 0]);
@@ -43,18 +44,12 @@ export default function PiercingBookingSection() {
   try {
     setLoading(true);
 
-    try {
-      // axios request
-    } finally {
-      setLoading(false);
-  }
-
     const formData = new FormData();
 
     formData.append("name", form.name);
     formData.append("email", form.email);
     formData.append("phone", form.phone);
-    formData.append("style", form.style);
+    formData.append("style", "Piercing");
     formData.append("date", form.date);
     formData.append("message", form.message);
 
@@ -63,14 +58,14 @@ export default function PiercingBookingSection() {
     });
 
     await axios.post(
-  "https://maheshtattoostudio-emailuser.up.railway.app/api/book",
-  formData,
-  {
-    headers: {
-      "Content-Type": "multipart/form-data",
-    },
-  }
-);
+      "https://maheshtattoostudio-emailuser.up.railway.app/api/book",
+      formData,
+      {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      }
+    );
 
     setSubmitted(true);
 
@@ -81,7 +76,6 @@ export default function PiercingBookingSection() {
         name: "",
         email: "",  
         phone: "",
-        style: "",
         date: "",
         message: "",
       });
