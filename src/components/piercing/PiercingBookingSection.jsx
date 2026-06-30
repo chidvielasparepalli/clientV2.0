@@ -87,7 +87,7 @@ export default function PiercingBookingSection() {
   } finally {
     setLoading(false);
   }
-};wssss 
+};
 
   const handleChange = (field) => (e) => {
     setForm({ ...form, [field]: e.target.value });
