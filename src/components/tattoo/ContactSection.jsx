@@ -66,13 +66,13 @@ export default function ContactSection() {
               <h3 className="font-display text-lg text-foreground mb-2">Phone</h3>
               <div className="flex items-center gap-3">
                 <a
-                  href="#booking"
+                  href="tel:9748249133"
                   className="text-sm text-muted-foreground hover:text-primary transition-colors font-body"
                 >
-                  booking
+                  +91 9748249133
                 </a>
                 <a
-                  href="#booking"
+                  href="tel:9748249133"
                   className="flex items-center justify-center w-9 h-9 rounded-full bg-primary text-primary-foreground hover:bg-primary/80 transition-all duration-300 shadow-lg shadow-primary/30 hover:shadow-primary/50 hover:scale-110 select-none"
                   aria-label="Call now"
                 >
@@ -105,7 +105,6 @@ export default function ContactSection() {
               >
                 @maheshtattoostudio
               </a>
-              <p className="text-xs text-muted-foreground/60 mt-1 font-body">2,435 followers · 1,055 posts</p>
             </div>
           </motion.div>
 
